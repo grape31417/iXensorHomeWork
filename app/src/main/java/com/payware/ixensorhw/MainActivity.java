@@ -7,21 +7,19 @@ import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+
 import com.payware.ixensorhw.databinding.ActivityMainBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private View badge;
-    private static int WALLET=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_phone, R.id.navigation_chat, R.id.navigation_explore, R.id.navigation_wallet)
                 .build();
@@ -44,19 +41,15 @@ public class MainActivity extends AppCompatActivity {
         setBottomBadge();
 
 
-
-
-
-
-
     }
 
     private void setBottomBadge()
     {
         BottomNavigationMenuView bottomNavigationMenuView = (BottomNavigationMenuView) binding.navView.getChildAt(0);
+        int WALLET = 3;
         View v = bottomNavigationMenuView.getChildAt(WALLET);
         BottomNavigationItemView itemView = (BottomNavigationItemView) v;
-        badge = LayoutInflater.from(this).inflate(R.layout.bottom_badge, itemView, true);
+        View badge = LayoutInflater.from(this).inflate(R.layout.bottom_badge, itemView, true);
     }
 
 }
